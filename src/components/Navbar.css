@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "pokemon";
+    font-weight: 400;
+    src: url(../fonts/gordita/Gordita\ Medium.woff);
+}
+
+.navbar {
+  background-color: #3D7DCA;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  z-index: 1;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.navbar-logo {
+  color: white;
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icon {
+  margin-right: 0.5rem;
+}
