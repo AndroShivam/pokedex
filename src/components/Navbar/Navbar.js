@@ -8,7 +8,7 @@ function Navbar() {
         <nav className = "navbar">
             <div className = "navbar-container container">
                 <Link to = '/' className = "navbar-logo">
-                    <PokemonIconAlt className = "navbar-icon" size="140px" />
+                    <PokemonIconAlt className = "navbar-icon" size="150px" />
                 </Link>
             </div>
         </nav>
