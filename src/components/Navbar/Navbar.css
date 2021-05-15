@@ -1,0 +1,25 @@
+:root {
+    --primary-red: #FF0000;
+    --primary-blue: #3D7DCA;
+    --primary-yellow: #FFDE00;
+    --primary-navy: #003A70;
+}
+
+.navbar {
+  background-color: var(--primary-yellow);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-icon {
+    color: var(--primary-blue);
+}
+

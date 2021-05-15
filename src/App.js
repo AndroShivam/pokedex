@@ -1,20 +1,19 @@
 import React from 'react'
-import Navbar from './components/Navbar'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {Navbar, PokemonList} from './components'
 import './App.css'
 
-
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path = '/' />
-        </Switch>
-      </Router>
-    </div>
-  );
+const App = () => {
+    return (
+        <div className="App">
+            <Router>
+                <Switch>
+                    <Route path = "/" exact component = {Navbar}/>
+                </Switch>
+            </Router>
+            <PokemonList />
+        </div>
+    )
 }
 
-export default App;
+export default App
