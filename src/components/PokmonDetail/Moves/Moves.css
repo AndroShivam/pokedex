@@ -1,0 +1,29 @@
+.moves {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moves-container {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.moves-container > div {
+    padding: 4px 16px;
+    margin: 12px;
+    border-radius: 16px;
+    background-color: antiquewhite;
+}
+
+.moves-container p{
+    display: block;
+    text-transform: uppercase;
+}

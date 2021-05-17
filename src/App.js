@@ -1,18 +1,46 @@
 import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import {Navbar, PokemonList} from './components'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Navbar, PokemonList, PokemonDetail, About, Stats, Evolution, Moves} from './components'
 import './App.css'
 
 const App = () => {
     return (
-        <div className="App">
-            <Router>
-                <Switch>
-                    <Route path = "/" exact component = {Navbar}/>
-                </Switch>
-            </Router>
-            <PokemonList />
-        </div>
+        <Router>
+            <div className="App">
+                <Route exact path = '/'>
+                    <Navbar/>
+                    <PokemonList />
+                </Route>
+                <Route exact path = '/detail'>
+                    <PokemonDetail>
+                        <About/>
+                    </PokemonDetail>
+                </Route>
+                <Route exact path='/detail/about'>
+                    <PokemonDetail >
+                        <About/>
+                    </PokemonDetail>
+                </Route>
+
+                <Route exact path='/detail/stats'>
+                    <PokemonDetail>
+                        <Stats/>
+                    </PokemonDetail>
+                </Route>
+
+                <Route exact path='/detail/evolution'>
+                    <PokemonDetail>
+                        <Evolution/>
+                    </PokemonDetail>
+                </Route>
+
+                <Route exact path='/detail/moves'>
+                    <PokemonDetail>
+                        <Moves/>
+                    </PokemonDetail>
+                </Route>
+            </div>
+        </Router>
     )
 }
 

@@ -8,27 +8,27 @@ const PokemonList = () => {
     const [pokemons, setPokemons] = useState([])
     const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
     const [nextPageUrl, setNextPageUrl] = useState(null)
-    const [search, setSearch] = useState(null)
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         fetchPokemons()
     }, [currentPageUrl])
 
     useEffect(() => {
-        if(search != null){
-            fetchPokemons()
-        }
-    },[search])
-
-    useEffect(() => {
         let cancel
         const url = `https://pokeapi.co/api/v2/pokemon/${search}`
         axios.get(url, {cancelToken: new axios.CancelToken(c => cancel = c)}).then(results => {
-        setPokemons([])
         setPokemons([{
             name: results.data.name,
             img: results.data.sprites.other.dream_world.front_default,
-            type : results.data.types[getRandom(results.data.types.length)].type.name
+            abilities : results.data.abilities,
+            types : results.data.types,
+            height : results.data.height,
+            weight : results.data.weight,
+            moves : results.data.moves,
+            stats : results.data.stats,
+            species : results.data.species,
+            base_experience : results.data.base_experience
         }])
         }).catch(err => {
             if(axios.isCancel(err)) return
@@ -46,17 +46,21 @@ const PokemonList = () => {
                 ...currentPokemons,
                 ...results.map(res => (
                     {
+                        id: res.data.id,
                         name : res.data.name,
                         img: res.data.sprites.other.dream_world.front_default,
-                        type : res.data.types[getRandom(res.data.types.length)].type.name
+                        abilities : res.data.abilities,
+                        types : res.data.types,
+                        height : res.data.height,
+                        weight : res.data.weight,
+                        moves : res.data.moves,
+                        stats : res.data.stats,
+                        species : res.data.species,
+                        base_experience : res.data.base_experience
                     }
                 ))
             ]
         })
-    }
-
-    const getRandom = (num) => {
-        return  Math.floor(Math.random() * num)
     }
 
     const gotoNextPage = () => {
@@ -68,9 +72,9 @@ const PokemonList = () => {
     return (
         <>
             <div className="input-container">
-                <input type="text" placeholder="Search Pokemons" autoComplete="off" value={search}  onChange={(e) => setSearch(e.target.value)}/>
+                <input type="text" placeholder="Search Pokemons" autoComplete="off" value={search}  onChange={(e) => setSearch(e.target.value.toLowerCase())}/>
             </div>
-            <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage} />
+            <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage} search = {search}/>
         </>
     )
 }

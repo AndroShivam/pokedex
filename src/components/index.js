@@ -1,2 +1,7 @@
 export {default as Navbar} from './Navbar/Navbar'
 export {default as PokemonList} from './PokemonList/PokemonList'
+export {default as PokemonDetail} from './PokmonDetail/PokemonDetail'
+export {default as About} from './PokmonDetail/About/About'
+export {default as Stats} from './PokmonDetail/Stats/Stats'
+export {default as Evolution} from './PokmonDetail/Evolution/Evolution'
+export {default as Moves} from './PokmonDetail/Moves/Moves'

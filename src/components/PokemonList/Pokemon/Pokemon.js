@@ -1,4 +1,5 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import './Pokemon.css'
 
@@ -23,17 +24,33 @@ const colors = {
     water: "rgba(83,154,226, 0.5)"
 }
 
-const Pokemon = ({ pokemons, gotoNextPage }) => {
- 
+const Pokemon = ({ pokemons, gotoNextPage, search }) => {
+    const history = useHistory()
+
+    const handleOnClick = (id) => {
+        const pokemon = pokemons.filter(p => p.id === id)
+        history.push("/detail", {
+            pokemon : pokemon,
+            colors: colors 
+        })
+    }
+
+    const getRand = (types) => Math.floor(Math.random() * types)
+
     return (
         <InfiniteScroll 
             dataLength = {pokemons.length} 
             next= {gotoNextPage} 
             hasMore={true} 
-            loader={<div className="load-container"><img src = "https://i.imgur.com/aMz1Qtu.gif" alt="loading" className="load-img"/></div>}>
+            loader={
+            <div className="load-container" style ={{ display: search.length !== 0 ? "none" : "flex"}}>
+                <img className="load-img" src = "https://i.imgur.com/aMz1Qtu.gif" alt="loading" />
+            </div>}>
             <div className = "poke-container" >
                 {pokemons.map(pokemon => (
-                    <div key={pokemon.name} className="poke-card" style={{backgroundColor: colors[pokemon.type]}}>
+                    <div key={pokemon.id} className="poke-card" 
+                        style={{backgroundColor: colors[pokemon.types[getRand(pokemon.types.length)].type.name]}} 
+                        onClick = {() => handleOnClick(pokemon.id)}>
                         <div className="poke-img-container">
                             <img className = "poke-img" src={pokemon.img} alt="pokemon" />
                         </div>
