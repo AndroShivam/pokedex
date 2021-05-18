@@ -21,13 +21,13 @@ const About = () => {
     const decimeterToFeet = (dec) => (dec / 3.048).toFixed(2)
 
     return (
-        <div className="about-container">
-            <h3>
+        <div className="about">
+            <h4>
                 {flavorText.length !== 0 && flavorText[Math.floor(Math.random() * flavorText.length)].flavor_text}
-            </h3>
+            </h4>
 
             {pokemon.map(poke => (
-                <div key={poke.id} className="about-info-container">
+                <div key={poke.id} className="about-container">
                     <div className="about-info">
                         <h4>Base Experience : </h4>
                         <span>{poke.base_experience}</span>
@@ -44,9 +44,9 @@ const About = () => {
                         <h4>Abilities : </h4>
                         <div>
                         {poke.abilities.map(ability => (
-                            <span>{ability.ability.name}, </span>
+                            <span key={poke.id}>{ability.ability.name}, </span>
                         ))}  
-                        </div>
+                            </div>
                     </div> 
                 </div>
             ))}

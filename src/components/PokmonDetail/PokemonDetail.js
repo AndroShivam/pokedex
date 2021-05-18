@@ -42,26 +42,28 @@ const PokemonDetail = (props) => {
     const location = useLocation()
     const getRand = (types) => Math.floor(Math.random() * types)
 
-    return (
+     return (
         <div className="poke-detail-container">
-            {location.state.pokemon.map(poke => (
+            {pokemon.map(poke => (
                 <div key={poke.id} className="poke-detail-card">
                     <div 
-                        className="detail-img-container"
+                        className="detail-img"
                         style ={{ backgroundColor: location.state.colors[poke.types[getRand(poke.types.length)].type.name]}}>
                         <img src={poke.img} alt="pokemon" draggable={false} />
                     </div>
-                    <div className="detail-info-container">
-                        <div className="detail-name">
-                            <h1>{poke.name}</h1>
-                            <div className="detail-type">
-                                {poke.types.map((type, index) => (
-                                    <h4 style={{backgroundColor: location.state.colors[type.type.name]}} key={index}>{type.type.name}</h4>
-                                ))}
+                    <div className="detail-info">
+                        <div className="detail-info-container">
+                            <div className="detail-name">
+                                <h1>{poke.name}</h1>
+                                <div className="detail-type">
+                                    {poke.types.map((type, index) => (
+                                        <h4 style={{backgroundColor: location.state.colors[type.type.name]}} key={index}>{type.type.name}</h4>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="detail-nav-container">
-                            <DetailNavbar />
+                            <div className="detail-nav-container">
+                                <DetailNavbar />
+                            </div>
                         </div>
                         <div className="detail-info-render">
                             {props.children}

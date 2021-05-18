@@ -9,13 +9,11 @@ const Moves = () => {
     return (
         <div className = "moves">
             {pokemon.map(poke => (
-               <div key={poke.id} className="moves-container">
-                    {poke.moves.map(move => (
-                        <div className="move-name" key = {move.move.name}>
-                            <p>{move.move.name}</p>
-                        </div>
+                <div className="moves-container">
+                    {poke.moves.slice(0,10).map((move, index) => (
+                        <small key={move.move.name}>{move.move.name}</small>
                     ))}
-               </div>
+                </div>
             ))}
         </div>
     )
