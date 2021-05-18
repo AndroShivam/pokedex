@@ -40,6 +40,7 @@ const DetailNavbar = () => {
 
 const PokemonDetail = (props) => {
     const location = useLocation()
+    const pokemon = location.state.pokemon
     const getRand = (types) => Math.floor(Math.random() * types)
 
      return (
