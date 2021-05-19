@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {useLocation} from 'react-router-dom'
 import axios from 'axios'
 import './About.css'
 
-const About = () => {
-    const location = useLocation()
-    const pokemon = location.state.pokemon
+const About = ({pokemon}) => {
 
     const [flavorText, setFlavorText] = useState([])
 
@@ -16,40 +13,42 @@ const About = () => {
             setFlavorText(enText)
         }
         fetchFlavorText()
-    },[])
+    },[pokemon])
     
     const decimeterToFeet = (dec) => (dec / 3.048).toFixed(2)
 
     return (
         <div className="about">
-            <h4>
+            <h5>
                 {flavorText.length !== 0 && flavorText[Math.floor(Math.random() * flavorText.length)].flavor_text}
-            </h4>
+            </h5>
 
-            {pokemon.map(poke => (
-                <div key={poke.id} className="about-container">
-                    <div className="about-info">
-                        <h4>Base Experience : </h4>
-                        <span>{poke.base_experience}</span>
-                    </div>
-                    <div className="about-info">
-                        <h4>Height : </h4>
-                        <span>{decimeterToFeet(poke.height)}</span>
-                    </div>
-                    <div className="about-info">
-                        <h4>Weight : </h4>
-                        <span>{decimeterToFeet(poke.weight)}</span>
-                    </div>    
-                    <div className="about-info">
-                        <h4>Abilities : </h4>
-                        <div>
-                        {poke.abilities.map(ability => (
-                            <span key={poke.id}>{ability.ability.name}, </span>
-                        ))}  
+            <div className="about-info-container">
+                {pokemon.map(poke => (
+                    <div key={poke.id} className="about-info">
+                        <div className="info">
+                            <h5>Base Experience : </h5>
+                            <small>{poke.base_experience}</small>
+                        </div>
+                        <div className="info">
+                            <h5>Height : </h5>
+                            <small>{decimeterToFeet(poke.height)}</small>
+                        </div>
+                        <div className="info">
+                            <h5>Weight : </h5>
+                            <small>{decimeterToFeet(poke.weight)}</small>
+                        </div>    
+                        <div className="info">
+                            <h5>Abilities : </h5>
+                            <div>
+                                {poke.abilities.map(ability => (
+                                    <small key={ability.ability.name}>{ability.ability.name}, </small>
+                                ))}  
                             </div>
-                    </div> 
-                </div>
-            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

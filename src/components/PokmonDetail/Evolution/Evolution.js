@@ -1,10 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import {useLocation} from 'react-router-dom'
-import axios from 'axios'
+import React from 'react'
 
-const Evolution = () => {
-    const location = useLocation()
-    const pokemon = location.state.pokemon
+const Evolution = ({pokemon}) => {
 
     return (
         <div>

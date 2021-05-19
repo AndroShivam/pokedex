@@ -3,44 +3,32 @@ import axios from 'axios'
 import Pokemon from './Pokemon/Pokemon'
 import './PokemonList.css'
 
+const Error = ({name}) => {
+    return (
+        <div className="error-container">
+            <h4>Sorry! We Could not found "{name}"</h4>
+            <button className="error-btn" onClick={() => window.location.reload()}>Home</button>
+        </div>
+    )
+}
+
 const PokemonList = () => {
 
     const [pokemons, setPokemons] = useState([])
     const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
     const [nextPageUrl, setNextPageUrl] = useState(null)
     const [search, setSearch] = useState("")
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         fetchPokemons()
     }, [currentPageUrl])
 
-    useEffect(() => {
-        let cancel
-        const url = `https://pokeapi.co/api/v2/pokemon/${search}`
-        axios.get(url, {cancelToken: new axios.CancelToken(c => cancel = c)}).then(results => {
-        setPokemons([{
-            name: results.data.name,
-            img: results.data.sprites.other.dream_world.front_default,
-            abilities : results.data.abilities,
-            types : results.data.types,
-            height : results.data.height,
-            weight : results.data.weight,
-            moves : results.data.moves,
-            stats : results.data.stats,
-            species : results.data.species,
-            base_experience : results.data.base_experience
-        }])
-        }).catch(err => {
-            if(axios.isCancel(err)) return
-        })
-        return () => cancel()
-    }, [search])
-
-
     const fetchPokemons = async () => {
         const response = await axios.get(currentPageUrl)
         const results = await Promise.all(response.data.results.map(res => axios.get(res.url)))
         setNextPageUrl(response.data.next)
+        setError(false)
         setPokemons(currentPokemons => {
             return [
                 ...currentPokemons,
@@ -69,12 +57,36 @@ const PokemonList = () => {
         }, 1500)
     }
 
+    const handleSubmit = () => {
+        if(search.length === 0) return 
+        const url = `https://pokeapi.co/api/v2/pokemon/${search}`
+        axios.get(url).then(results => {
+        setPokemons([{
+            name: results.data.name,
+            img: results.data.sprites.other.dream_world.front_default,
+            abilities : results.data.abilities,
+            types : results.data.types,
+            height : results.data.height,
+            weight : results.data.weight,
+            moves : results.data.moves,
+            stats : results.data.stats,
+            species : results.data.species,
+            base_experience : results.data.base_experience
+        }])
+        }).catch(err => {
+            setError(true)
+        })
+    }
+
+
     return (
         <>
             <div className="input-container">
-                <input type="text" placeholder="Search Pokemons" autoComplete="off" value={search}  onChange={(e) => setSearch(e.target.value.toLowerCase())}/>
+                <input type="text" placeholder="Search Pokemons" autoComplete="off" onChange={(e) => setSearch(e.target.value)}/>
+                <input type="submit" className="btn" onClick={handleSubmit} value="Search" />
             </div>
-            <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage} search = {search}/>
+            {!error && <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage}/>}
+            {error && <Error name = {search} fetchPokemons = {fetchPokemons} />}
         </>
     )
 }

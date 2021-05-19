@@ -1,50 +1,33 @@
-import React from 'react'
-import {useHistory, useLocation, Route, Link} from 'react-router-dom'
+import React, {useState} from 'react'
+import {useLocation, useHistory} from 'react-router-dom'
+import About from './About/About'
+import Stats from './Stats/Stats'
+import Evolution from './Evolution/Evolution'
+import Moves from './Moves/Moves'
 import './PokemonDetail.css'
 
-const DetailNavbar = () => {
-    const location = useLocation()
+const PokemonDetail = () => {
+    
+    const [activeTab, setActiveTab] = useState("about")
+    
     const history = useHistory()
-
-    const handleAboutClick = () => history.push('/detail/about', {
-        pokemon: location.state.pokemon,
-        colors: location.state.colors
-    }) 
-
-    const handleStatsClick = () => history.push('/detail/stats',{
-        pokemon: location.state.pokemon, 
-        colors: location.state.colors
-    })
-
-    const handleEvolutionClick = () => history.push('/detail/evolution', {
-        pokemon: location.state.pokemon,
-        colors: location.state.colors
-    })
-
-    const handleMovesClick = () => history.push('/detail/moves', {
-        pokemon: location.state.pokemon,
-        colors: location.state.colors
-    })
-
-    return (
-        <nav className="detail-nav">
-            <ul className="detail-nav-items">
-                <li className="detail-nav-links" onClick={handleAboutClick}>About</li>
-                <li className="detail-nav-links" onClick={handleStatsClick}>Stats</li>
-                <li className="detail-nav-links" onClick={handleEvolutionClick}>Evolution</li>
-                <li className="detail-nav-links" onClick={handleMovesClick}>Moves</li>
-            </ul>
-        </nav>
-    )
-}
-
-const PokemonDetail = (props) => {
     const location = useLocation()
     const pokemon = location.state.pokemon
+
+    const TABS = {
+        "about": <About pokemon={pokemon} />,
+        "stats": <Stats pokemon={pokemon} />,
+        "evolution" : <Evolution pokemon={pokemon} />,
+        "moves": <Moves pokemon={pokemon}/>
+    }
+
     const getRand = (types) => Math.floor(Math.random() * types)
 
-     return (
+    return (
         <div className="poke-detail-container">
+            <div className="back-btn-container">
+                <button onClick = {() => history.goBack()}>Go Back</button>
+            </div>
             {pokemon.map(poke => (
                 <div key={poke.id} className="poke-detail-card">
                     <div 
@@ -63,11 +46,18 @@ const PokemonDetail = (props) => {
                                 </div>
                             </div>
                             <div className="detail-nav-container">
-                                <DetailNavbar />
+                                <nav className="detail-nav">
+                                    <ul className="detail-nav-items">
+                                        <li className = {`detail-nav-links ${activeTab === "about" ? "active" : null}`}  onClick={() => setActiveTab("about")}>About</li>
+                                        <li className = {`detail-nav-links ${activeTab === "stats" ? "active" : null}`} onClick={() => setActiveTab("stats")}>Stats</li>
+                                        <li className = {`detail-nav-links ${activeTab === "evolution" ? "active" : null}`} onClick={() => setActiveTab("evolution")}>Evolution</li>
+                                        <li className = {`detail-nav-links ${activeTab === "moves" ? "active" : null}`} onClick={() => setActiveTab("moves")}>Moves</li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                         <div className="detail-info-render">
-                            {props.children}
+                            {TABS[activeTab]}
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+    --primary-red: #FF0000;
+    --primary-blue: #3D7DCA;
+    --primary-yellow: #FFDE00;
+    --primary-navy: #003A70;
+}
+
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
 }
 
 body {
