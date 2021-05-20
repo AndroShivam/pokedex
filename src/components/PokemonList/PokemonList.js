@@ -1,16 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Pokemon from './Pokemon/Pokemon'
+import Error from './Error/Error'
 import './PokemonList.css'
-
-const Error = ({name}) => {
-    return (
-        <div className="error-container">
-            <h4>Sorry! We Could not found "{name}"</h4>
-            <button className="error-btn" onClick={() => window.location.reload()}>Home</button>
-        </div>
-    )
-}
 
 const PokemonList = () => {
 
@@ -57,9 +49,9 @@ const PokemonList = () => {
         }, 1500)
     }
 
-    const handleSubmit = () => {
+    const handleSearch = () => {
         if(search.length === 0) return 
-        const url = `https://pokeapi.co/api/v2/pokemon/${search}`
+        const url = `https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`
         axios.get(url).then(results => {
         setPokemons([{
             name: results.data.name,
@@ -83,7 +75,7 @@ const PokemonList = () => {
         <>
             <div className="input-container">
                 <input type="text" placeholder="Search Pokemons" autoComplete="off" onChange={(e) => setSearch(e.target.value)}/>
-                <input type="submit" className="btn" onClick={handleSubmit} value="Search" />
+                <input type="submit" className="btn" onClick={handleSearch} value="Search" />
             </div>
             {!error && <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage}/>}
             {error && <Error name = {search} fetchPokemons = {fetchPokemons} />}

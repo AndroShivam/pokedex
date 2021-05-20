@@ -13,7 +13,7 @@ const About = ({pokemon}) => {
             setFlavorText(enText)
         }
         fetchFlavorText()
-    },[pokemon])
+    },[])
     
     const decimeterToFeet = (dec) => (dec / 3.048).toFixed(2)
 
