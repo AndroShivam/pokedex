@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+<h1 align="center">Pokédex</h1>
+<p align="center">  
+Pokédex made using Reactjs and PokeApi
+</p>
+</br>
+<p align="center">
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif" />
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" />
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif" />
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Screenshots
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/52043419/119086981-f6abad80-ba23-11eb-8464-dc3b6fb4f1a6.png" width="700px"/>
+  <img src="https://user-images.githubusercontent.com/52043419/119086984-f7dcda80-ba23-11eb-80c2-4e9a2d908069.png" width="700px"/>
+  <img src="https://user-images.githubusercontent.com/52043419/119086985-f7dcda80-ba23-11eb-8545-ec36831746fb.png" width="700px"/>
+  <img src="https://user-images.githubusercontent.com/52043419/119086974-f4495380-ba23-11eb-96b9-5a894eddacfd.png" width="700px"/> 
+</p>
 
-## Available Scripts
+## Check it out
+- [PokemonPedia](https://pokemonpedia.netlify.app/)
 
-In the project directory, you can run:
+## Tech stack & Open-source libraries
+- [React](https://github.com/facebook/react/) - A JavaScript library for building user interfaces
+- [PokeApi](https://github.com/PokeAPI/pokeapi) - The Pokémon API
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [React-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component) - An awesome Infinite Scroll component in react
+- [React icons](https://github.com/react-icons/react-icons) - Include popular icons in your React projects 
+- [React Router Dom](https://github.com/ReactTraining/react-router) - Declarative routing for React
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Additional Credits
+- [Pokemonaaah](http://www.pokemonaaah.net/artsyfartsy/colordex/) - For providing colors codes for pokemon types
+- [Brand Palettes](https://brandpalettes.com/pokemon-color-codes/) - For providing color codes for pokemon logo
