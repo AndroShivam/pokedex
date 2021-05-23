@@ -16,7 +16,7 @@ const About = ({pokemon}) => {
     },[])
     
     const decimeterToFeet = (dec) => (dec / 3.048).toFixed(2)
-
+    
     return (
         <div className="about">
             <h5>
@@ -32,11 +32,11 @@ const About = ({pokemon}) => {
                         </div>
                         <div className="info">
                             <h5>Height : </h5>
-                            <small>{decimeterToFeet(poke.height)}</small>
+                            <small>{poke.height * 10} cm</small>
                         </div>
                         <div className="info">
                             <h5>Weight : </h5>
-                            <small>{decimeterToFeet(poke.weight)}</small>
+                            <small>{poke.weight / 10} kg</small>
                         </div>    
                         <div className="info">
                             <h5>Abilities : </h5>

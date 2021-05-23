@@ -8,7 +8,7 @@ const Moves = ({pokemon}) => {
             {pokemon.map(poke => (
                 <div key = {poke.id} className="moves-container">
                     {poke.moves.slice(0,10).map(move => (
-                        <small key={move.move.name}>{move.move.name}</small>
+                        <small key={move.move.name}>{(move.move.name).replace('-', ' ')}</small>
                     ))}
                 </div>
             ))}

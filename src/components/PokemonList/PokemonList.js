@@ -46,7 +46,7 @@ const PokemonList = () => {
     const gotoNextPage = () => {
         setTimeout(() => {
             setCurrentPageUrl(nextPageUrl)
-        }, 1500)
+        }, 1000)
     }
 
     const handleSearch = () => {
