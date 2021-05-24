@@ -5,18 +5,23 @@ import './About.css'
 const About = ({pokemon}) => {
 
     const [flavorText, setFlavorText] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const fetchFlavorText = async () => {
             const resposne = await axios.get(pokemon[0].species.url)
             const enText = await resposne.data.flavor_text_entries.filter(text => text.language.name === "en")
+            setLoading(false)
             setFlavorText(enText)
         }
         fetchFlavorText()
     },[])
-    
-    const decimeterToFeet = (dec) => (dec / 3.048).toFixed(2)
-    
+
+    if(loading){
+        return "loading..."
+    }
+        
     return (
         <div className="about">
             <h5>
