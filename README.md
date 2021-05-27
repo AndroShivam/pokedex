@@ -32,3 +32,4 @@ Pokédex made using Reactjs and PokeApi
 ## Additional Credits
 - [Pokemonaaah](http://www.pokemonaaah.net/artsyfartsy/colordex/) - For providing colors codes for pokemon types
 - [Brand Palettes](https://brandpalettes.com/pokemon-color-codes/) - For providing color codes for pokemon logo
+- [Imgur](https://imgur.com/aMz1Qtu) - For providing running pikachu gif
