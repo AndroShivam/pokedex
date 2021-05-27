@@ -5,6 +5,8 @@ import './Pokemon.css'
 
 const Pokemon = ({ pokemons, gotoNextPage }) => {
 
+    const checkHasMore = () => pokemons.length < 1100
+
     if(pokemons.length === 1){
         return <Card pokemons={pokemons}/>
     }else {
@@ -12,7 +14,7 @@ const Pokemon = ({ pokemons, gotoNextPage }) => {
             <InfiniteScroll 
                 dataLength = {pokemons.length} 
                 next= {gotoNextPage} 
-                hasMore={true} 
+                hasMore={checkHasMore()} 
                 loader={
                 <div className="load-container">
                     <img className="load-img" src = "https://i.imgur.com/aMz1Qtu.gif" alt="loading" />
