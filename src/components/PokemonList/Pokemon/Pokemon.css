@@ -12,6 +12,17 @@
     vertical-align: middle;
 }
 
+.scroll-top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 24px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 9999;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px){
 
     .load-img {

@@ -1,14 +1,16 @@
 /* input */
 
 .input-container {
+    width: 100%;
+    max-width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 input[type='text'] {
-    width: 50%;
-    max-width: 100%;
+    width: 100%;
     padding: 14px 18px;
     margin: 24px;
     font-size: 16px;
@@ -33,9 +35,16 @@ input:focus {
 
 @media screen and (max-width: 768px) {
 
+    .input-container {
+        width: 100%;
+        max-width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    
     input[type='text'] {
-        width: 60%;
-        max-width: 100%;
         padding: 18px;
         margin: 24px;
         font-size: 16px;
@@ -53,5 +62,4 @@ input:focus {
         background-color: var(--primary-red);
         color: white;
     }
-    
 }
