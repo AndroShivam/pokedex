@@ -4,15 +4,16 @@ import About from './About/About'
 import Stats from './Stats/Stats'
 import Evolution from './Evolution/Evolution'
 import Moves from './Moves/Moves'
+import TitleComponent from './TitleComponent'
 import './PokemonDetail.css'
 
 const PokemonDetail = () => {
     
-    const [activeTab, setActiveTab] = useState("about")
-    
     const history = useHistory()
     const location = useLocation()
     const pokemon = location.state.pokemon
+    
+    const [activeTab, setActiveTab] = useState("about")
 
     const TABS = {
         "about": <About pokemon={pokemon} />,
@@ -22,10 +23,6 @@ const PokemonDetail = () => {
     }
 
     const getRand = (types) => Math.floor(Math.random() * types)
-
-    String.prototype.capitalize = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1)
-    }
     
     return (
         <div className="poke-detail-container">
@@ -42,7 +39,7 @@ const PokemonDetail = () => {
                     <div className="detail-info">
                         <div className="detail-info-container">
                             <div className="detail-name">
-                                {document.title = "Pokédex | " + poke.name.capitalize()}
+                                <TitleComponent title={poke.name} />
                                 <h1>{poke.name}</h1>
                                 <div className="detail-type">
                                     {poke.types.map((type, index) => (
