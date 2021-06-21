@@ -28,6 +28,7 @@ Pokédex made using Reactjs and PokeApi
 - [React-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component) - An awesome Infinite Scroll component in react
 - [React icons](https://github.com/react-icons/react-icons) - Include popular icons in your React projects 
 - [React Router Dom](https://github.com/ReactTraining/react-router) - Declarative routing for React
+- [React Helmet](https://github.com/nfl/react-helmet) - A document head manager for React
 
 ## Additional Credits
 - [Pokemonaaah](http://www.pokemonaaah.net/artsyfartsy/colordex/) - For providing colors codes for pokemon types
