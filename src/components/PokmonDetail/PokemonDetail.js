@@ -23,6 +23,10 @@ const PokemonDetail = () => {
 
     const getRand = (types) => Math.floor(Math.random() * types)
 
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1)
+    }
+    
     return (
         <div className="poke-detail-container">
             <div className="back-btn-container">
@@ -38,6 +42,7 @@ const PokemonDetail = () => {
                     <div className="detail-info">
                         <div className="detail-info-container">
                             <div className="detail-name">
+                                {document.title = "Pokédex | " + poke.name.capitalize()}
                                 <h1>{poke.name}</h1>
                                 <div className="detail-type">
                                     {poke.types.map((type, index) => (
