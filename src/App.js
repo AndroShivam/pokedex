@@ -8,12 +8,8 @@ const App = () => {
         <Router>
             <Navbar/>
             <div className="App">
-                <Route exact path = '/'>
-                    <PokemonList />
-                </Route>
-                <Route exact path = '/pokemon/:id'>
-                    <PokemonDetail/>
-                </Route>
+                <Route exact path = '/' component={PokemonList}/>
+                <Route exact path = '/pokemon/:id' component={PokemonDetail} />
             </div>
         </Router>
     )
