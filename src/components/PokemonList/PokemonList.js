@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 import Pokemon from './Pokemon/Pokemon'
 import Error from './Error/Error'
@@ -6,10 +6,10 @@ import './PokemonList.css'
 
 const PokemonList = () => {
 
+    const search = useRef()
     const [pokemons, setPokemons] = useState([])
     const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
     const [nextPageUrl, setNextPageUrl] = useState(null)
-    const [search, setSearch] = useState("")
     const [error, setError] = useState(false)
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const PokemonList = () => {
 
     const handleSearch = () => {
         if(search.length === 0) return 
-        const url = `https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`
+        const url = `https://pokeapi.co/api/v2/pokemon/${search.current.value.toLowerCase()}`
         axios.get(url).then(results => {
         setPokemons([{
             name: results.data.name,
@@ -74,7 +74,7 @@ const PokemonList = () => {
     return (
         <>
             <div className="input-container">
-                <input type="text" placeholder="Search Pokemons" autoComplete="off" onChange={(e) => setSearch(e.target.value)}/>
+                <input type="text" placeholder="Search Pokemons" autoComplete="off" ref={search} />
                 <input type="submit" className="btn" onClick={handleSearch} value="Search" />
             </div>
             {!error && <Pokemon pokemons = {pokemons} gotoNextPage={gotoNextPage}/>}
