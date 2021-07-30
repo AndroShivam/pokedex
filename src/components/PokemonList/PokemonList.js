@@ -50,7 +50,7 @@ const PokemonList = () => {
     }
 
     const handleSearch = () => {
-        if(search.length === 0) return 
+        if(search.current.value.length === 0) return 
         const url = `https://pokeapi.co/api/v2/pokemon/${search.current.value.toLowerCase()}`
         axios.get(url).then(results => {
         setPokemons([{
@@ -65,7 +65,7 @@ const PokemonList = () => {
             species : results.data.species,
             base_experience : results.data.base_experience
         }])
-        }).catch(err => {
+        }).catch(_ => {
             setError(true)
         })
     }
